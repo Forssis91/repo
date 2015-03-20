@@ -35,5 +35,5 @@ class AnimationControlThread(QThread):
             time.sleep(1/self.frameRate)
             if self.maxFrameCount > currentFrame:
                 self.showFrame.emit(currentFrame)
-                currentFrame = (currentFrame+1) % self.frameCount
+                currentFrame = (currentFrame+1) % self.maxFrameCount
                 

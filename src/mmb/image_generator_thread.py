@@ -27,7 +27,6 @@ class ImageGeneratorThread(QThread):
         self.steps = steps
         
     def run(self):
-            # Some interesting targets.
         # Animation parameters.
         steps = self.steps
         
