@@ -31,13 +31,9 @@ class AnimationControlThread(QThread):
     def run(self):
         currentFrame = 0
         self.running = True
-        inc = 1
         while self.running:
             time.sleep(1/self.frameRate)
             if self.maxFrameCount > currentFrame:
                 self.showFrame.emit(currentFrame)
-                if (currentFrame > 0 and currentFrame + inc == self.maxFrameCount) or currentFrame + inc == -1:
-                    inc = -inc
-                currentFrame += inc
-                #currentFrame = (currentFrame+1) % self.frameCount
+                currentFrame = (currentFrame+1) % self.frameCount
                 
