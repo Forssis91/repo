@@ -12,7 +12,7 @@ import numpy as np
 class ImageGeneratorThread(QThread):
     '''
     Generates a sequence of mandelbrot images
-    
+
     step: number of images to generate
     width, height: the dimensions of the images
     maxit: maximum amount of iterations
