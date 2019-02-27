@@ -25,20 +25,20 @@ class ImageGeneratorThread(QThread):
         self.height = height
         self.maxit = maxit
         self.steps = steps
-        
+
     def run(self):
         # Some interesting targets.
         mandelbrotAntennas = (-0.1638, 1.0353)
         seahorseValley = (-0.746, -0.1)
         elephantValley = (0.2855, 0.012)
-        
+
         # Animation parameters.
-        target = mandelbrotAntennas
+        target = seahorseValley
         steps = self.steps
-        
+
         def easing(begin, end, steps):
             return np.fromfunction(lambda step: begin-((step/(steps-1)-1.0)**4-1.0)*(end - begin), (steps,), dtype=float)
-        
+
         x = easing(-0.5, target[0], steps)
         y = easing(0.0, target[1], steps)
         w = easing(3, 0.0005, steps)
@@ -48,5 +48,3 @@ class ImageGeneratorThread(QThread):
             frame = mandelbrot.calculate(x[i], y[i], w[i])
             frame = colorizer.colorize(frame)
             self.newImage.emit(frame)
-
-    
